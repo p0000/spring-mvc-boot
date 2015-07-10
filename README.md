@@ -9,3 +9,7 @@ HelloServiceから文字列を取得し、
 
 UI: Thymeleafを利用しています。
 
+【動かすには】
+1. gradle pluginからbuild してjarたちをかき集める
+2. gradle の bootRun
+
