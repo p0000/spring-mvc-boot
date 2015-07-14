@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="jp">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <title>掲示板</title>
+</head>
+<body>
+<div id="head">
+    <div id="head-in">
+        <h1>掲示板</h1>
+    </div>
+</div>
+<div id="main">
+    <div id="main-in">
+        <form action="./regist" method="post">
+            <input type="hidden" name="mode" value="regist"/>
+
+            <div id="reg-box">
+                <table id="reg-tbl">
+                    <tr>
+                        <th>おなまえ</th>
+                        <td><input type="text" name="name" value="" class="reg-name"/></td>
+                    </tr>
+                    <tr>
+                        <th>タイトル</th>
+                        <td>
+                            <input type="text" name="sub" value="" class="reg-title"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            メッセージ<br/>
+                            <textarea name="comment" class="reg-com"></textarea>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="投稿" class="reg-btn"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    <hr size="1" color="#ffc8c8" width="20%" />
+    <!-- List of Messages -->
+    <div class="bbs-art">
+        <h3>ここにタイトルが表示されます</h3>
+
+        <div class="bbs-com">
+            ここに入力されたコメントが表示されたりします。
+        </div>
+        <div class="bbs-pan">
+            <span>KENT</span>
+            <span>99/09/18(Sat) 14:50</span>
+            <span>No.4</span>
+            <!-- <a href="/res?res=4&amp;pg=0" title="返信"><img src="./rep.png" alt="" class="img"/></a> -->
+        </div>
+    </div>
+    <!-- end of List -->
+</div>
+</body>
+</html>
