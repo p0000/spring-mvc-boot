@@ -63,6 +63,13 @@ dependencies {
 
 }
 
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
 jar {
     baseName = 'spring-mvc'
     version = '0.0.1'

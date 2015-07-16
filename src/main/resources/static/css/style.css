@@ -9,10 +9,6 @@ body {
 	font-family:Verdana,"MS Gothic",Osaka,Arial,sans-serif;
 }
 
-hr {
-	width: 100%;
-	align: left;
-}
 a:link, a:visited {
 	color: #1122cc;
 	text-decoration: none;

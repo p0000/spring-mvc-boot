@@ -4,6 +4,8 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Cache-Control" content="no-cache"/>
+    <!-- css -->
+    <link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
     <title>掲示板</title>
 </head>
 <body>
@@ -14,25 +16,23 @@
 </div>
 <div id="main">
     <div id="main-in">
-        <form action="./regist" method="post">
-            <input type="hidden" name="mode" value="regist"/>
-
+        <form action="bbs.html" th:attr="action=@{/reg}" th:object="${article}" method="post">
             <div id="reg-box">
                 <table id="reg-tbl">
                     <tr>
                         <th>おなまえ</th>
-                        <td><input type="text" name="name" value="" class="reg-name"/></td>
+                        <td><input type="text" name="name" th:field="*{name}" value="" class="reg-name"/></td>
                     </tr>
                     <tr>
                         <th>タイトル</th>
                         <td>
-                            <input type="text" name="sub" value="" class="reg-title"/>
+                            <input type="text" name="title" th:field="*{title}" value="" class="reg-title"/>
                         </td>
                     </tr>
                     <tr>
                         <th colspan="2">
                             メッセージ<br/>
-                            <textarea name="comment" class="reg-com"></textarea>
+                            <textarea name="message" th:field="*{message}" class="reg-com"></textarea>
                         </th>
                     </tr>
                     <tr>
@@ -44,21 +44,22 @@
             </div>
         </form>
     </div>
-    <hr size="1" color="#ffc8c8" width="20%" />
     <!-- List of Messages -->
-    <div class="bbs-art">
-        <h3>ここにタイトルが表示されます</h3>
+    <tr th:each="article : ${articles}">
+        <div class="bbs-art">
+            <h3 th:text="${article.title}">ここにタイトルが表示されます</h3>
 
-        <div class="bbs-com">
-            ここに入力されたコメントが表示されたりします。
+            <div class="bbs-com" th:text="${article.message}">
+                ここに入力されたコメントが表示されたりします。
+            </div>
+            <div class="bbs-pan">
+                <span th:text="${article.name}">SS01</span>
+                <span th:text="${#calendars.format(article.date,'dd MMMM yyyy')}">2015/09/18(Sat) 14:50</span>
+                <span th:text="'No.' + ${article.articleId}">No.4</span>
+                <!-- <a href="/res?res=4&amp;pg=0" title="返信"><img src="./rep.png" alt="" class="img"/></a> -->
+            </div>
         </div>
-        <div class="bbs-pan">
-            <span>KENT</span>
-            <span>99/09/18(Sat) 14:50</span>
-            <span>No.4</span>
-            <!-- <a href="/res?res=4&amp;pg=0" title="返信"><img src="./rep.png" alt="" class="img"/></a> -->
-        </div>
-    </div>
+    </tr>
     <!-- end of List -->
 </div>
 </body>
